@@ -1,5 +1,5 @@
 # An Arbitrary scale super resolution methods for stereo-vision
-# Original Title: StereoINR: Cross-View Geometry Consistent Stereo Super Resolution with Implicit Neural Representation
+Title: StereoINR: Cross-View Geometry Consistent Stereo Super Resolution with Implicit Neural Representation
 
 ### Installation
 This implementation based on [BasicSR](https://github.com/xinntao/BasicSR) which is a open source toolbox for image/video restoration tasks.
