@@ -1,5 +1,7 @@
 # An Arbitrary scale super resolution methods for stereo-vision
-### Title: StereoINR: Cross-View Geometry Consistent Stereo Super Resolution with Implicit Neural Representation
+Title: [StereoINR: Cross-View Geometry Consistent Stereo Super Resolution with Implicit Neural Representation](https://www.arxiv.org/abs/2505.05509)
+
+ACM MM 2025
 
 ### Installation
 This implementation based on [BasicSR](https://github.com/xinntao/BasicSR) which is a open source toolbox for image/video restoration tasks.
@@ -12,7 +14,7 @@ This implementation based on [BasicSR](https://github.com/xinntao/BasicSR) which
 ## 1. Quick Test 
 #### 1.1 Download the pretrained model to the dir of 'experiments/pretrained_models'.
 #####
-   *pretrained model can be download at ,
+   *pretrained model can be download at [Google Drive](https://drive.google.com/drive/folders/1nkqxDjfKJYl2yyO7r9cEO_IMBlAAJto7?usp=drive_link) ,
        
 #### 1.2 Modify the dataroot_lq: in  'options/test/ASSR'
         test_StereoINR_scale.yml
