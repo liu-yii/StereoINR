@@ -4,3 +4,7 @@ results
 vis_outputs
 weights
 logs
+options/train
+paperwrite.md
+vis.py
+val.py
