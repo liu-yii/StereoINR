@@ -1,0 +1,41 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Test",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "basicsr/test.py",
+            "console": "integratedTerminal",
+            "args": [
+                "-opt",
+                "options/test/ASSR/test_StereoINR_4x.yml"
+            ]
+        },
+        {
+            "name": "Train",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "basicsr/train.py",
+            "console": "integratedTerminal",
+            "args": [
+                "-opt",
+                "options/train/train_StereoINR_HATNet-L.yml"
+            ]
+        }
+        {
+            "name": "Test_LAM",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "basicsr/test_lam.py",
+            "console": "integratedTerminal",
+            "args": [
+                "-opt",
+                "options/test/ASSR/test_continuous_HATNet-L_4x.yml"
+            ]
+        },
+    ]
+}

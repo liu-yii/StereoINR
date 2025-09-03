@@ -1,0 +1,89 @@
+# general settings
+name: test_StereoINR_2x
+model_type: ArbSSRModel
+scale: 2
+num_gpu: 1 # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+  test_0:
+    name: KITTI2015
+    type: TestContinuousStereoImageDataset
+    dataroot_gt: /mnt/D/iPASSR/test/KITTI2015/hr
+    io_backend:
+      type: disk
+
+  test_1:
+    name: Middlebury
+    type: TestContinuousStereoImageDataset
+    dataroot_gt: /mnt/D/iPASSR/test/Middlebury/hr
+    io_backend:
+      type: disk
+
+  test_2:
+    name: KITTI2012
+    type: TestContinuousStereoImageDataset
+    dataroot_gt: /mnt/D/iPASSR/test/KITTI2012/hr
+    io_backend:
+      type: disk
+
+  test_3:
+    name: Flickr1024
+    type: TestContinuousStereoImageDataset
+    dataroot_gt: /mnt/D/iPASSR/test/Flickr1024/hr
+    io_backend:
+      type: disk
+
+
+# network structures
+network_g:
+  opt_params: ~
+  type: StereoINR
+  upscale: 4
+  in_chans: 3
+  img_size: [32, 96]
+  window_size: 16
+  compress_ratio: 3
+  squeeze_factor: 30
+  conv_scale: 0.01
+  overlap_ratio: 0.5
+  drop_path_rate: 0.1
+  img_range: 1.
+  depths: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+  embed_dim: 180
+  num_heads: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+  mlp_ratio: 2
+  upsampler: 'continuous'
+  # upsampler: 'pixelshuffle'
+  resi_connection: '1conv'
+
+# path
+path:
+  pretrain_network_g: experiments/train_StereoINR_HATNet_scalev1-dgasuv5-bs4/models/net_g_240000.pth
+  strict_load_g: true
+  resume_state: ~
+
+# validation settings
+val:
+  save_img: true
+  grids: false
+  ensemble: false
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 4
+      test_y_channel: false
+    psnr_left: # metric name, can be arbitrary
+      type: calculate_psnr_left
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_skimage_ssim
+    ssim_left:
+      type: calculate_skimage_ssim_left
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
